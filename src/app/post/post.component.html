@@ -1,0 +1,50 @@
+<div class="container-fluid"> 
+    <nav class="navbar navbar-expand-sm bg-secondary navbar-secondary">
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">Tools</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+        <input [(ngModel)]="search" style="width:200px;" type="text" placeholder="search a post"
+        value="" class="form-control mr-sm-2 justify-content-center "> 
+        <button (click)="searchPost()"  class="btn btn-light "> Search </button>
+      </nav>  
+  
+    <div class="row mt-1 post"> 
+        <div class="col-3 d-none col-md-3 d-md-block"></div> 
+        <div class="col-6 col-md-6  d-flex  
+                    justify-content-center align-items-center  
+                    text-light h3"> 
+            <input [(ngModel)]="post" type="text"  value="" class="col-7 form-control" style="width:300px;"> 
+            <div class="col-1"></div> 
+            <button (click)="addToList()"   class="btn btn-info"> Share </button> 
+        </div> 
+        <div class="col-3 d-none col-md-3 d-md-block"></div> 
+    </div> 
+  
+    <div *ngFor="let post of posts; let index = index;" class="row mt-1 post"> 
+        <div class="col-3 d-none col-md-3 d-md-block"></div> 
+        <div class="col-12 col-md-6 bg-info d-flex  align-items-center text-light"> 
+        <div class="col-9 text-light">{{post}}</div> 
+        <input (click)="deletePost(index)" type="button"
+                value="Delete" class="col-2 btn btn-danger"> 
+        </div> 
+    </div> 
+
+    <div class="row">
+        <h3 *ngIf="searchResults.length>0">Search Results</h3>
+    </div>
+    
+    <div *ngFor="let searchResult of searchResults" class="row mt-1 post" > 
+        <div class="col-3 d-none col-md-3 d-md-block"></div> 
+        <div class="col-12 col-md-6 bg-secondary d-flex align-items-center text-light"> 
+        <div class="col-9 text-light">{{searchResult}}</div> 
+  </div> 
+</div> 
